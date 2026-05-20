@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coupe Animath — Problèmes Lycée 2014–2025</title>
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$','$']],
+    displayMath: [['$$','$$']],
+    packages: {'[+]': ['ams']}
+  },
+  options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] },
+  startup: { typeset: true }
+};
+</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0c1017;
+  --surface: #131922;
+  --surface2: #1a2232;
+  --border: #25304a;
+  --text: #cdd6f4;
+  --text-dim: #7a8fb0;
+  --text-bright: #eef2ff;
+  --gold: #d4a843;
+  --radius: 10px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Crimson Pro', Georgia, serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+/* ── Layout ─────────────────────────────────────── */
+.layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: 100vh;
+}
+
+/* ── Sidebar ─────────────────────────────────────── */
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  padding: 24px 16px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.sidebar-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.toc-theme {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 16px 0 6px;
+}
+.toc-theme a {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+}
+.toc-count {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  background: var(--border);
+  color: var(--text-dim);
+  padding: 1px 7px;
+  border-radius: 20px;
+}
+.toc-item a {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11.5px;
+  color: var(--text-dim);
+  text-decoration: none;
+  padding: 3px 0 3px 12px;
+  border-left: 2px solid transparent;
+  transition: color .15s, border-color .15s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.toc-item a:hover {
+  color: var(--text);
+  border-left-color: var(--gold);
+}
+
+/* ── Main ────────────────────────────────────────── */
+.main {
+  padding: 40px 48px 80px;
+  max-width: 860px;
+}
+
+/* ── Hero header ─────────────────────────────────── */
+.hero {
+  margin-bottom: 48px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--border);
+}
+.hero-subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+.hero h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--text-bright);
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+.hero-meta {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--text-dim);
+}
+.hero-stats {
+  display: flex;
+  gap: 24px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+.stat-pill {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  padding: 4px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+}
+
+/* ── Legend ──────────────────────────────────────── */
+.legend {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+  padding: 16px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.legend-item {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12.5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ── Sections ────────────────────────────────────── */
+section {
+  margin-bottom: 56px;
+}
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+  padding-left: 16px;
+  border-left: 4px solid;
+}
+.section-icon {
+  font-size: 1.4rem;
+  line-height: 1;
+}
+.section-header h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text-bright);
+  flex: 1;
+}
+.section-count {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  color: var(--text-dim);
+  background: var(--border);
+  padding: 2px 10px;
+  border-radius: 20px;
+}
+
+/* ── Problem card ────────────────────────────────── */
+.problem-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--theme-color, #3b82f6);
+  border-radius: var(--radius);
+  padding: 22px 24px;
+  margin-bottom: 18px;
+  transition: box-shadow .2s;
+}
+.problem-card:hover {
+  box-shadow: 0 4px 24px rgba(0,0,0,.3);
+}
+.problem-header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.year-badge {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  background: var(--surface2);
+  color: var(--gold);
+  padding: 2px 10px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+.ex-num {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  color: var(--text-dim);
+}
+.label-badge {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  padding: 1px 8px;
+  border-radius: 20px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.badge-commun {
+  background: #1c2e4a;
+  color: #60a5fa;
+  border: 1px solid #2563eb44;
+}
+.badge-lycee {
+  background: #1a2c24;
+  color: #4ade80;
+  border: 1px solid #16a34a44;
+}
+.diff-badge {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11.5px;
+  font-weight: 500;
+  margin-left: auto;
+  padding: 2px 10px;
+  border-radius: 20px;
+}
+.diff-vert  { background:#14532d22; color:#4ade80; border:1px solid #16a34a44; }
+.diff-jaune { background:#42300522; color:#fbbf24; border:1px solid #ca8a0444; }
+.diff-rouge { background:#45050522; color:#f87171; border:1px solid #dc262644; }
+.diff-violet { background:#3b0f5e22; color:#c084fc; border:1px solid #9333ea44; }
+
+.problem-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-bright);
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+.problem-body {
+  font-size: 1rem;
+  color: var(--text);
+  line-height: 1.75;
+}
+.problem-body p { margin-bottom: 8px; }
+.problem-body ol, .problem-body ul {
+  padding-left: 24px;
+  margin: 8px 0;
+}
+.problem-body li { margin-bottom: 4px; }
+.problem-body strong { color: var(--text-bright); }
+.problem-body em { color: #93c5fd; font-style: italic; }
+
+/* ── Responsive ──────────────────────────────────── */
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { position: relative; height: auto; }
+  .main { padding: 24px 20px 60px; }
+}
+
+@media print {
+  .sidebar { display: none; }
+  .layout { grid-template-columns: 1fr; }
+  .main { padding: 0; max-width: 100%; }
+  .problem-card { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+<div class="layout">
+
+  <!-- ── Sidebar ── -->
+  <nav class="sidebar">
+    <div class="sidebar-title">Table des matières</div>
+    <div class="toc-theme"><a href="#combinatoire" style="color:#3b82f6">◈ Combinatoire</a><span class="toc-count">28</span></div>
+<div class="toc-item"><a href="#combinatoire-2014-4">🟢 2014 · Ex.4 — Paires et nombres premiers</a></div>
+<div class="toc-item"><a href="#combinatoire-2014-5">🟡 2014 · Ex.5 — Tournoi de football</a></div>
+<div class="toc-item"><a href="#combinatoire-2015-5">🔴 2015 · Ex.5 — Entiers autour d'un cercle</a></div>
+<div class="toc-item"><a href="#combinatoire-2016-6">🔴 2016 · Ex.6 — Triangulation d'un polygone convexe</a></div>
+<div class="toc-item"><a href="#combinatoire-2016-8">🟡 2016 · Ex.8 — Résultats d'un contrôle scolaire</a></div>
+<div class="toc-item"><a href="#combinatoire-2017-7">🟣 2017 · Ex.7 — Graphe d'amitié et alignement</a></div>
+<div class="toc-item"><a href="#combinatoire-2018-6">🔴 2018 · Ex.6 — Suite à croissances locales</a></div>
+<div class="toc-item"><a href="#combinatoire-2018-8">🟣 2018 · Ex.8 — Barres cassées et triangles tricolores</a></div>
+<div class="toc-item"><a href="#combinatoire-2019-4">🔴 2019 · Ex.4 — Grenouilles sur une grille</a></div>
+<div class="toc-item"><a href="#combinatoire-2019-8">🟣 2019 · Ex.8 — Coloriages majoritaires dans une grille</a></div>
+<div class="toc-item"><a href="#combinatoire-2020-9">🟢 2020 · Ex.9 — Mains de cartes à quatre exemplaires identi…</a></div>
+<div class="toc-item"><a href="#combinatoire-2020-11">🟡 2020 · Ex.11 — Coloriage d'entiers sans multiple de même c…</a></div>
+<div class="toc-item"><a href="#combinatoire-2020-16">🔴 2020 · Ex.16 — Partition d'entiers en deux groupes équilib…</a></div>
+<div class="toc-item"><a href="#combinatoire-2020-17">🟣 2020 · Ex.17 — Tableau ntimes n avec exactement k cases no…</a></div>
+<div class="toc-item"><a href="#combinatoire-2021-12">🟢 2021 · Ex.12 — Coloriage de {1,ldots,2021} en trois couleurs</a></div>
+<div class="toc-item"><a href="#combinatoire-2021-16">🟣 2021 · Ex.16 — Partition en ensembles équilibrés</a></div>
+<div class="toc-item"><a href="#combinatoire-2022-10">🟡 2022 · Ex.10 — Immeubles intéressants autour d'un cercle</a></div>
+<div class="toc-item"><a href="#combinatoire-2022-11">🟡 2022 · Ex.11 — Élèves, entiers consécutifs et carrés parfa…</a></div>
+<div class="toc-item"><a href="#combinatoire-2023-11">🟡 2023 · Ex.11 — Différences répétées dans une suite croissa…</a></div>
+<div class="toc-item"><a href="#combinatoire-2023-13">🟡 2023 · Ex.13 — Cases coloriées dans une grille 10times 10</a></div>
+<div class="toc-item"><a href="#combinatoire-2023-14">🔴 2023 · Ex.14 — 2n nombres&nbsp;: somme = produit</a></div>
+<div class="toc-item"><a href="#combinatoire-2023-15">🟣 2023 · Ex.15 — Nombres spéciaux</a></div>
+<div class="toc-item"><a href="#combinatoire-2024-11">🟡 2024 · Ex.11 — Coloriage de réels en trois couleurs</a></div>
+<div class="toc-item"><a href="#combinatoire-2024-13">🔴 2024 · Ex.13 — Grille 100times100 vers l'échiquier</a></div>
+<div class="toc-item"><a href="#combinatoire-2025-10">🟡 2025 · Ex.10 — Graphe d'amitié avec la propriété de transi…</a></div>
+<div class="toc-item"><a href="#combinatoire-2025-12">🔴 2025 · Ex.12 — Entiers formant deux ensembles consécutifs</a></div>
+<div class="toc-item"><a href="#combinatoire-2025-13">🟡 2025 · Ex.13 — 2025 entiers&nbsp;: divisibilité croisée</a></div>
+<div class="toc-item"><a href="#combinatoire-2025-15">🟣 2025 · Ex.15 — Espions sur une grille 2025times 2025</a></div>
+<div class="toc-theme"><a href="#geometrie" style="color:#10b981">△ Géométrie</a><span class="toc-count">23</span></div>
+<div class="toc-item"><a href="#geometrie-2014-6">🔴 2014 · Ex.6 — Cercles équidistants de quatre points</a></div>
+<div class="toc-item"><a href="#geometrie-2015-4">🟡 2015 · Ex.4 — Angles égaux dans un triangle avec isopérim…</a></div>
+<div class="toc-item"><a href="#geometrie-2015-7">🟣 2015 · Ex.7 — Points sur un cercle et subdivision en arcs…</a></div>
+<div class="toc-item"><a href="#geometrie-2016-4">🟡 2016 · Ex.4 — Trapèze isocèle et inégalité de distances</a></div>
+<div class="toc-item"><a href="#geometrie-2017-3">🟡 2017 · Ex.3 — Triangle à angle de 60° et médiatrices</a></div>
+<div class="toc-item"><a href="#geometrie-2017-4">🟡 2017 · Ex.4 — Longueur de diagonale d'un quadrilatère</a></div>
+<div class="toc-item"><a href="#geometrie-2018-5">🟢 2018 · Ex.5 — Longueur sur un demi-cercle</a></div>
+<div class="toc-item"><a href="#geometrie-2018-7">🔴 2018 · Ex.7 — Trapèze, droite parallèle et angle droit</a></div>
+<div class="toc-item"><a href="#geometrie-2019-6">🟡 2019 · Ex.6 — Parallélogramme et perpendicularité</a></div>
+<div class="toc-item"><a href="#geometrie-2020-10">🟢 2020 · Ex.10 — Angles d'un triangle isocèle avec bissectri…</a></div>
+<div class="toc-item"><a href="#geometrie-2020-15">🟡 2020 · Ex.15 — Carré extérieur et triangle équilatéral</a></div>
+<div class="toc-item"><a href="#geometrie-2021-10">🟢 2021 · Ex.10 — Carré et triangle équilatéral intérieur</a></div>
+<div class="toc-item"><a href="#geometrie-2021-14">🔴 2021 · Ex.14 — Inégalités de distances dans triangles et q…</a></div>
+<div class="toc-item"><a href="#geometrie-2021-17">🔴 2021 · Ex.17 — 8 fourmis sur les arêtes d'un cube</a></div>
+<div class="toc-item"><a href="#geometrie-2022-9">🟢 2022 · Ex.9 — Angles d'un triangle AMC isocèle</a></div>
+<div class="toc-item"><a href="#geometrie-2022-12">🔴 2022 · Ex.12 — Angles et bissectrices dans un triangle iso…</a></div>
+<div class="toc-item"><a href="#geometrie-2022-13">🔴 2022 · Ex.13 — Colorier le plan en 3 couleurs et triangle …</a></div>
+<div class="toc-item"><a href="#geometrie-2023-9">🟢 2023 · Ex.9 — Angle widehat{ABC} dans un triangle</a></div>
+<div class="toc-item"><a href="#geometrie-2023-12">🟡 2023 · Ex.12 — Rapport EK/EA dans un losange</a></div>
+<div class="toc-item"><a href="#geometrie-2024-10">🟡 2024 · Ex.10 — Centre du cercle inscrit et angle widehat{B…</a></div>
+<div class="toc-item"><a href="#geometrie-2024-14">🔴 2024 · Ex.14 — Triangle isocèle, médiatrice et parallèle</a></div>
+<div class="toc-item"><a href="#geometrie-2025-9">🟢 2025 · Ex.9 — Rectangle, bissectrice et angle widehat{PXQ}</a></div>
+<div class="toc-item"><a href="#geometrie-2025-11">🟡 2025 · Ex.11 — Triangle isocèle en A, milieux et hauteur</a></div>
+<div class="toc-theme"><a href="#arithmetique" style="color:#f59e0b">∞ Arithmétique</a><span class="toc-count">16</span></div>
+<div class="toc-item"><a href="#arithmetique-2015-6">🔴 2015 · Ex.6 — Étude de f(n) = leftlfloor n / lfloorsqrt{n…</a></div>
+<div class="toc-item"><a href="#arithmetique-2015-8">🟣 2015 · Ex.8 — Nombres premiers et carrés parfaits</a></div>
+<div class="toc-item"><a href="#arithmetique-2016-7">🔴 2016 · Ex.7 — Entier divisible par la somme de ses chiffres</a></div>
+<div class="toc-item"><a href="#arithmetique-2017-5">🟡 2017 · Ex.5 — Ajouter le plus grand chiffre</a></div>
+<div class="toc-item"><a href="#arithmetique-2017-6">🔴 2017 · Ex.6 — Diviseurs de n et diviseurs de n-1</a></div>
+<div class="toc-item"><a href="#arithmetique-2019-5">🔴 2019 · Ex.5 — Parties entières de puissances et carrés</a></div>
+<div class="toc-item"><a href="#arithmetique-2019-7">🟣 2019 · Ex.7 — Suite et divisibilité par 3^{2019}</a></div>
+<div class="toc-item"><a href="#arithmetique-2020-13">🟡 2020 · Ex.13 — Entiers vérifiant n leq 2s(n)</a></div>
+<div class="toc-item"><a href="#arithmetique-2020-14">🔴 2020 · Ex.14 — Deux entiers avec diviseurs décalés de 1</a></div>
+<div class="toc-item"><a href="#arithmetique-2021-11">🟡 2021 · Ex.11 — Diviseurs d'un multiple de 2020</a></div>
+<div class="toc-item"><a href="#arithmetique-2021-13">🔴 2021 · Ex.13 — Notes modifiées et différence de 100</a></div>
+<div class="toc-item"><a href="#arithmetique-2022-8">🟢 2022 · Ex.8 — Diamants et cristaux (réponse numérique)</a></div>
+<div class="toc-item"><a href="#arithmetique-2022-14">🔴 2022 · Ex.14 — Suite d'entiers et quotients entiers</a></div>
+<div class="toc-item"><a href="#arithmetique-2023-8">🟢 2023 · Ex.8 — n/3 et 3n simultanément entre 1 et 1000 (ré…</a></div>
+<div class="toc-item"><a href="#arithmetique-2024-12">🔴 2024 · Ex.12 — Nombres premiers et groupes consécutifs</a></div>
+<div class="toc-item"><a href="#arithmetique-2025-8">🟢 2025 · Ex.8 — Calcul de racines imbriquées (réponse numér…</a></div>
+<div class="toc-theme"><a href="#algebre" style="color:#a78bfa">∫ Algèbre</a><span class="toc-count">11</span></div>
+<div class="toc-item"><a href="#algebre-2014-7">🔴 2014 · Ex.7 — Suite strictement croissante et inégalité p…</a></div>
+<div class="toc-item"><a href="#algebre-2016-5">🟢 2016 · Ex.5 — Retrouver une valeur parmi cinq réels</a></div>
+<div class="toc-item"><a href="#algebre-2018-4">🟢 2018 · Ex.4 — Réel a dont deux expressions sont entières</a></div>
+<div class="toc-item"><a href="#algebre-2020-12">🟡 2020 · Ex.12 — Double inégalité P leq G leq 2P</a></div>
+<div class="toc-item"><a href="#algebre-2021-9">🟢 2021 · Ex.9 — Cartes rouges et noires (réponse numérique)</a></div>
+<div class="toc-item"><a href="#algebre-2021-15">🟡 2021 · Ex.15 — Réels dans ]-1, 1[ de sommes prescrites</a></div>
+<div class="toc-item"><a href="#algebre-2022-15">🟣 2022 · Ex.15 — Inégalité entre puissances de réels positifs</a></div>
+<div class="toc-item"><a href="#algebre-2024-8">🟢 2024 · Ex.8 — Calcul numérique (réponse numérique)</a></div>
+<div class="toc-item"><a href="#algebre-2024-9">🟢 2024 · Ex.9 — Système linéaire impliquant a^2 + b^2 = 2c^2</a></div>
+<div class="toc-item"><a href="#algebre-2024-15">🟣 2024 · Ex.15 — Constante optimale pour l'attribution de ca…</a></div>
+<div class="toc-item"><a href="#algebre-2025-14">🔴 2025 · Ex.14 — Réels n-permutants et somme de parties enti…</a></div>
+  </nav>
+
+  <!-- ── Main ── -->
+  <main class="main">
+
+    <div class="hero">
+      <p class="hero-subtitle">Coupe Animath de Printemps · POFM</p>
+      <h1>Problèmes Lycée<br>2014 – 2025</h1>
+      <p class="hero-meta">Base de travail pour la préparation aux olympiades · Annales complètes</p>
+      <div class="hero-stats">
+        <span class="stat-pill">📚 78 problèmes</span>
+        <span class="stat-pill">📅 12 éditions (2014–2025)</span>
+        <span class="stat-pill">🎯 4 thèmes</span>
+        <span class="stat-pill">⏱ Durée épreuve : 4 heures</span>
+      </div>
+    </div>
+
+    <div class="legend">
+      <div class="legend-item"><span>Niveaux de difficulté :</span></div>
+      <div class="legend-item"><span class="diff-badge diff-vert">🟢 Vert – Facile</span></div>
+      <div class="legend-item"><span class="diff-badge diff-jaune">🟡 Jaune – Intermédiaire</span></div>
+      <div class="legend-item"><span class="diff-badge diff-rouge">🔴 Rouge – Difficile</span></div>
+      <div class="legend-item"><span class="diff-badge diff-violet">🟣 Violet – Très difficile</span></div>
+      <div class="legend-item" style="margin-left:auto"><span class="label-badge badge-commun">Commun</span> = problème partagé collège/lycée</div>
+    </div>
+
+    
+<section id="combinatoire">
+  <div class="section-header" style="border-left-color:#3b82f6">
+    <span class="section-icon" style="color:#3b82f6">◈</span>
+    <h2>Combinatoire</h2>
+    <span class="section-count">28 problèmes</span>
+  </div>
+
+  <div class="problem-card" id="combinatoire-2014-4" style="--theme-color:#3b82f6">
+    <div class="problem-header">
+      <span class="year-badge">2014</span>
+      <span class="ex-num">Exercice 4</span>
+      <span class="label-badge badge-commun">Commun</span>
+      <span class="diff-badge diff-vert">🟢 Vert – Facile</span>
+    </div>
+    <div class="problem-title">Paires et nombres premiers</div>
+    <div class="problem-body"><p>a) Est-il possible de répartir les nombres $1, 2, 3, \ldots, 10$ en cinq paires de sorte que les cinq sommes par paires donnent cinq nombres premiers différents&#8239;?</p>
+<p>b) Est-il possible de répartir les nombres $1, 2, 3, \ldots, 20$ en dix paires de sorte que les dix sommes par paires donnent dix nombres premiers différents&#8239;?</p></div>
+  </div>
+
+  <div class="problem-card" id="combinatoire-2014-5" style="--theme-color:#3b82f6">
+    <div class="problem-header">
+      <span class="year-badge">2014</span>
+      <span class="ex-num">Exercice 5</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-jaune">🟡 Jaune – Intermédiaire</span>
+    </div>
+    <div class="problem-title">Tournoi de football</div>
+    <div class="problem-body"><p>Lors d'un tournoi de football, chaque équipe rencontre exactement deux fois chacune des autres. Il n'y a pas de match nul, une victoire rapporte deux points et une défaite ne rapporte rien. Il se trouve qu'une seule équipe a remporté le tournoi avec 26 points, et qu'il y a deux équipes dernières ex-æquo avec 20 points chacune.</p>
+<p>Déterminer le nombre d'équipes, et donner un exemple de tournoi où de tels résultats se produisent.</p></div>
+  </div>
+
+  <div class="problem-card" id="combinatoire-2015-5" style="--theme-color:#3b82f6">
+    <div class="problem-header">
+      <span class="year-badge">2015</span>
+      <span class="ex-num">Exercice 5</span>
+      <span class="label-badge badge-commun">Commun</span>
+      <span class="diff-badge diff-rouge">🔴 Rouge – Difficile</span>
+    </div>
+    <div class="problem-title">Entiers autour d'un cercle</div>
+    <div class="problem-body"><p>2015 entiers strictement positifs sont placés autour d'un cercle. Montrer qu'il est possible de trouver deux entiers voisins tels que, après les avoir supprimés, les nombres restants ne puissent pas être séparés en deux groupes de même somme.</p></div>
+  </div>
+
+  <div class="problem-card" id="combinatoire-2016-6" style="--theme-color:#3b82f6">
+    <div class="problem-header">
+      <span class="year-badge">2016</span>
+      <span class="ex-num">Exercice 6</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-rouge">🔴 Rouge – Difficile</span>
+    </div>
+    <div class="problem-title">Triangulation d'un polygone convexe</div>
+    <div class="problem-body"><p>Dans un polygone convexe à 2016 côtés, on trace certaines diagonales, qui ne se coupent pas à l'intérieur du polygone. Ce dessin décompose le polygone en 2014 triangles.</p>
+<p>Est-il possible qu'exactement la moitié de ces triangles aient leurs trois côtés qui soient des diagonales&#8239;?</p></div>
+  </div>
+
+  <div class="problem-card" id="combinatoire-2016-8" style="--theme-color:#3b82f6">
+    <div class="problem-header">
+      <span class="year-badge">2016</span>
+      <span class="ex-num">Exercice 8</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-jaune">🟡 Jaune – Intermédiaire</span>
+    </div>
+    <div class="problem-title">Résultats d'un contrôle scolaire</div>
+    <div class="problem-body"><p>a) Un contrôle a eu lieu dans une classe. On sait qu'au moins les deux tiers des questions de ce contrôle étaient difficiles&nbsp;: pour chacune de ces questions difficiles, au moins les deux tiers des élèves n'ont pas su répondre. On sait aussi qu'au moins les deux tiers des élèves ont bien réussi le contrôle&nbsp;: chacun d'eux a su répondre à au moins deux tiers des questions. Est-ce possible&#8239;?</p>
+<p>b) La réponse à la question précédente serait-elle la même si l'on remplaçait partout «&#8239;deux tiers&#8239;» par «&#8239;trois quarts&#8239;»&#8239;?</p>
+<p>c) La réponse à la première question serait-elle la même si l'on remplaçait partout «&#8239;deux tiers&#8239;» par «&#8239;sept dixièmes&#8239;»&#8239;?</p></div>
+  </div>
+
+  <div class="problem-card" id="combinatoire-2017-7" style="--theme-color:#3b82f6">
+    <div class="problem-header">
+      <span class="year-badge">2017</span>
+      <span class="ex-num">Exercice 7</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-violet">🟣 Violet – Très difficile</span>
+    </div>
+    <div class="problem-title">Graphe d'amitié et alignement</div>
+    <div class="problem-body"><p>Un stage de mathématiques contient exactement un million d'élèves, certains d'entre eux étant amis (si $A$ est un ami de $B$, alors $B$ est un ami de $A$).</p>
+<p>a) On suppose que chaque élève a au plus deux amis. Montrer qu'il est possible d'aligner les élèves de telle manière que si deux élèves sont amis, il y a au plus 2017 élèves entre eux.</p>
+<p>b) On suppose maintenant que chaque élève a au plus trois amis. Montrer que ce n'est plus forcément possible.</p></div>
+  </div>
+
+  <div class="problem-card" id="combinatoire-2018-6" style="--theme-color:#3b82f6">
+    <div class="problem-header">
+      <span class="year-badge">2018</span>
+      <span class="ex-num">Exercice 6</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-rouge">🔴 Rouge – Difficile</span>
+    </div>
+    <div class="problem-title">Suite à croissances locales</div>
+    <div class="problem-body"><p>Déterminer le plus petit entier $N$ tel que l'on puisse trouver 125 entiers distincts $a_1, a_2, \ldots, a_{125}$ sur une ligne de sorte que :</p>
+<ol>
+<li>chacun de ces entiers est strictement positif, et inférieur ou égal à $N$&#8239;;</li>
+<li>chacun des 123 entiers $a_2, \ldots, a_{124}$ est strictement plus grand que la moyenne arithmétique de l'entier écrit à sa gauche et de l'entier écrit à sa droite.</li>
+</ol></div>
+  </div>
+
+  <div class="problem-card" id="combinatoire-2018-8" style="--theme-color:#3b82f6">
+    <div class="problem-header">
+      <span class="year-badge">2018</span>
+      <span class="ex-num">Exercice 8</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-violet">🟣 Violet – Très difficile</span>
+    </div>
+    <div class="problem-title">Barres cassées et triangles tricolores</div>
+    <div class="problem-body"><p>Daphné et Loïs disposent de trois barres de longueur 1 mètre : une blanche, une bleue et une rouge. Daphné casse chacune des deux premières en trois morceaux, et Loïs casse la troisième en trois morceaux.</p>
+<p>Est-ce que Daphné peut faire en sorte qu'à la fin, quoi que fasse Loïs, elle soit sûre de pouvoir composer trois triangles (non aplatis) avec les neuf morceaux obtenus, de sorte que chaque triangle ait un côté de chaque couleur&#8239;?</p></div>
+  </div>
+
+  <div class="problem-card" id="combinatoire-2019-4" style="--theme-color:#3b82f6">
+    <div class="problem-header">
+      <span class="year-badge">2019</span>
+      <span class="ex-num">Exercice 4</span>
+      <span class="label-badge badge-commun">Commun</span>
+      <span class="diff-badge diff-rouge">🔴 Rouge – Difficile</span>
+    </div>
+    <div class="problem-title">Grenouilles sur une grille</div>
+    <div class="problem-body"><p>On considère une grande grille carrée de côté 10, découpée en petits carrés de côté 1. Deux petits carrés sont dits <em>voisins</em> s'ils ont un côté commun. Sur chacun des petits carrés est inscrit un nombre réel positif. De plus, 5 grenouilles se déplacent sur la grille et peuvent recouvrir chacune un petit carré. Deux grenouilles ne recouvrent jamais le même carré. Entre deux instants, chaque grenouille saute du carré où elle se trouve vers un carré voisin.</p>
+<p>On suppose que la somme des nombres visibles vaut $10$ à l'instant $1$, puis $10^2$ à l'instant $2$, puis $10^3$ à l'instant $3$, et ainsi de suite jusqu'à l'instant $k$ où la somme vaut $10^k$. Quelle est la plus grande valeur possible de $k$&#8239;?</p></div>
+  </div>
+
+  <div class="problem-card" id="combinatoire-2019-8" style="--theme-color:#3b82f6">
+    <div class="problem-header">
+      <span class="year-badge">2019</span>
+      <span class="ex-num">Exercice 8</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-violet">🟣 Violet – Très difficile</span>
+    </div>
+    <div class="problem-title">Coloriages majoritaires dans une grille</div>
+    <div class="problem-body"><p>Soient $m$ et $n$ deux entiers impairs avec $m, n \geq 3$. Dans une grille $m \times n$, on colorie chaque petit carré en bleu ou en rouge. On note $A$ le nombre de lignes où les carrés bleus sont majoritaires, et $B$ le nombre de colonnes où les carrés rouges sont majoritaires.</p>
+<p>Quelle est la plus grande valeur possible de $A + B$&#8239;?</p></div>
+  </div>
+
+  <div class="problem-card" id="combinatoire-2020-9" style="--theme-color:#3b82f6">
+    <div class="problem-header">
+      <span class="year-badge">2020</span>
+      <span class="ex-num">Exercice 9</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-vert">🟢 Vert – Facile</span>
+    </div>
+    <div class="problem-title">Mains de cartes à quatre exemplaires identiques</div>
+    <div class="problem-body"><p>On dispose d'un jeu contenant 52 cartes. Chaque carte comporte une valeur parmi «&#8239;1, 2, 3, 4, 5, 6, 7, 8, 9, 10, valet, dame, roi&#8239;» ainsi qu'une couleur parmi «&#8239;cœur, carreau, pique, trèfle&#8239;», de telle sorte que, pour chaque valeur et chaque couleur, le jeu contient une unique carte. Une main de 5 cartes est un choix de 5 cartes de ce jeu, sans se soucier de l'ordre.</p>
+<p>Combien existe-t-il de mains de 5 cartes qui contiennent quatre cartes ayant la même valeur&#8239;?</p>
+<p><em>(Seule une réponse numérique est attendue.)</em></p></div>
+  </div>
+
+  <div class="problem-card" id="combinatoire-2020-11" style="--theme-color:#3b82f6">
+    <div class="problem-header">
+      <span class="year-badge">2020</span>
+      <span class="ex-num">Exercice 11</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-jaune">🟡 Jaune – Intermédiaire</span>
+    </div>
+    <div class="problem-title">Coloriage d'entiers sans multiple de même couleur</div>
+    <div class="problem-body"><p>1) Alice désire colorier les entiers entre 2 et 8 (inclus) en utilisant $k$ couleurs. Elle souhaite que, si $m$ et $n$ sont des entiers entre 2 et 8 tels que $m$ est un multiple de $n$ et $m \neq n$, alors $m$ et $n$ sont de couleurs différentes. Déterminer le plus petit entier $k$ pour lequel Alice peut réaliser ce coloriage.</p>
+<p>2) Même question pour les entiers entre 2 et 31.</p></div>
+  </div>
+
+  <div class="problem-card" id="combinatoire-2020-16" style="--theme-color:#3b82f6">
+    <div class="problem-header">
+      <span class="year-badge">2020</span>
+      <span class="ex-num">Exercice 16</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-rouge">🔴 Rouge – Difficile</span>
+    </div>
+    <div class="problem-title">Partition d'entiers en deux groupes équilibrés</div>
+    <div class="problem-body"><p>La somme de certains entiers positifs (pas forcément distincts) inférieurs ou égaux à 10 vaut $S$. Trouver toutes les valeurs de $S$ telles que, quels que soient ces entiers, ils peuvent toujours être partitionnés en deux groupes, chacun de somme inférieure ou égale à 70.</p></div>
+  </div>
+
+  <div class="problem-card" id="combinatoire-2020-17" style="--theme-color:#3b82f6">
+    <div class="problem-header">
+      <span class="year-badge">2020</span>
+      <span class="ex-num">Exercice 17</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-violet">🟣 Violet – Très difficile</span>
+    </div>
+    <div class="problem-title">Tableau $n\times n$ avec exactement $k$ cases noires par ligne</div>
+    <div class="problem-body"><p>Soit $k \geq 1$ un entier positif. Déterminer le plus petit entier $n$ pour lequel on peut colorier certaines cases d'un tableau $n \times n$ en noir de telle sorte que :</p>
+<ul>
+<li>deux cases noires n'aient pas de côté ou de sommet en commun&#8239;;</li>
+<li>chaque ligne et chaque colonne possède exactement $k$ cases noires.</li>
+</ul></div>
+  </div>
+
+  <div class="problem-card" id="combinatoire-2021-12" style="--theme-color:#3b82f6">
+    <div class="problem-header">
+      <span class="year-badge">2021</span>
+      <span class="ex-num">Exercice 12</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-vert">🟢 Vert – Facile</span>
+    </div>
+    <div class="problem-title">Coloriage de $\{1,\ldots,2021\}$ en trois couleurs</div>
+    <div class="problem-body"><p>De combien de manières peut-on colorier les entiers de 1 à 2021 de sorte que chaque entier est colorié soit en bleu, soit en vert, soit en rouge, et de sorte que deux entiers consécutifs ne soient jamais de la même couleur&#8239;?</p></div>
+  </div>
+
+  <div class="problem-card" id="combinatoire-2021-16" style="--theme-color:#3b82f6">
+    <div class="problem-header">
+      <span class="year-badge">2021</span>
+      <span class="ex-num">Exercice 16</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-violet">🟣 Violet – Très difficile</span>
+    </div>
+    <div class="problem-title">Partition en ensembles équilibrés</div>
+    <div class="problem-body"><p>On dit qu'un ensemble non vide d'entiers est <em>équilibré</em> si son nombre d'éléments est égal à la moyenne de ses éléments. Par exemple, l'ensemble $\{1, 2, 6\}$ est équilibré (3 éléments de moyenne 3), mais $\{1, 2, \ldots, n\}$ ne l'est pas lorsque $n > 2$.</p>
+<p>Est-il possible de partitionner l'ensemble $\{1, 2, \ldots, 2021^2\}$ en plusieurs ensembles équilibrés, deux à deux disjoints&#8239;?</p></div>
+  </div>
+
+  <div class="problem-card" id="combinatoire-2022-10" style="--theme-color:#3b82f6">
+    <div class="problem-header">
+      <span class="year-badge">2022</span>
+      <span class="ex-num">Exercice 10</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-jaune">🟡 Jaune – Intermédiaire</span>
+    </div>
+    <div class="problem-title">Immeubles intéressants autour d'un cercle</div>
+    <div class="problem-body"><p>On considère vingt immeubles arrangés autour d'un cercle. Chaque immeuble possède un nombre entier d'étages compris entre 1 et 20, et deux immeubles quelconques ont toujours un nombre d'étages différent. Un immeuble est dit <em>intéressant</em> s'il possède plus d'étages que l'un de ses voisins et moins d'étages que l'autre. Les immeubles sont arrangés de telle sorte qu'il y a six immeubles intéressants.</p>
+<p>1) Montrer que la somme des nombres d'étages des immeubles intéressants est toujours supérieure ou égale à 27.</p>
+<p>2) Donner une configuration pour laquelle il y a exactement six immeubles intéressants et dont la somme des nombres d'étages vaut exactement 27.</p></div>
+  </div>
+
+  <div class="problem-card" id="combinatoire-2022-11" style="--theme-color:#3b82f6">
+    <div class="problem-header">
+      <span class="year-badge">2022</span>
+      <span class="ex-num">Exercice 11</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-jaune">🟡 Jaune – Intermédiaire</span>
+    </div>
+    <div class="problem-title">Élèves, entiers consécutifs et carrés parfaits</div>
+    <div class="problem-body"><p>Dans une salle il y a dix élèves. Aline écrit dix entiers relatifs consécutifs au tableau. Chaque élève choisit un des dix entiers écrits au tableau (deux élèves choisissent toujours deux entiers différents). Chaque élève calcule ensuite la somme des neuf entiers choisis par les neuf autres élèves. Chaque élève dont le résultat est un carré parfait reçoit alors un cadeau.</p>
+<p>Quel est le nombre maximum d'élèves qui vont recevoir un cadeau&#8239;?</p></div>
+  </div>
+
+  <div class="problem-card" id="combinatoire-2023-11" style="--theme-color:#3b82f6">
+    <div class="problem-header">
+      <span class="year-badge">2023</span>
+      <span class="ex-num">Exercice 11</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-jaune">🟡 Jaune – Intermédiaire</span>
+    </div>
+    <div class="problem-title">Différences répétées dans une suite croissante</div>
+    <div class="problem-body"><p>Soit $a_1, \ldots, a_{100}$ cent entiers distincts tels que $1 \leq a_1 < a_2 < \cdots < a_{100} \leq 400$. Pour tout entier $i$ tel que $1 \leq i \leq 99$, on pose $d_i = a_{i+1} - a_i$.</p>
+<p>Montrer qu'il y a au moins 15 nombres parmi $d_1, d_2, \ldots, d_{99}$ qui sont égaux.</p></div>
+  </div>
+
+  <div class="problem-card" id="combinatoire-2023-13" style="--theme-color:#3b82f6">
+    <div class="problem-header">
+      <span class="year-badge">2023</span>
+      <span class="ex-num">Exercice 13</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-jaune">🟡 Jaune – Intermédiaire</span>
+    </div>
+    <div class="problem-title">Cases coloriées dans une grille $10\times 10$</div>
+    <div class="problem-body"><p>On considère une grille $10 \times 10$ composée de 100 cases. Les lignes sont numérotées de 1 à 10 (de haut en bas) et les colonnes de 1 à 10 (de gauche à droite). Martin colorie certaines cases de la grille, de sorte que pour toute case coloriée $c$, il existe <em>au plus</em> une case coloriée différente de $c$ dont le numéro de colonne est supérieur ou égal à celui de $c$ et dont le numéro de ligne est supérieur ou égal à celui de $c$.</p>
+<p>Quel est le nombre maximal de cases que Martin peut colorier&#8239;?</p></div>
+  </div>
+
+  <div class="problem-card" id="combinatoire-2023-14" style="--theme-color:#3b82f6">
+    <div class="problem-header">
+      <span class="year-badge">2023</span>
+      <span class="ex-num">Exercice 14</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-rouge">🔴 Rouge – Difficile</span>
+    </div>
+    <div class="problem-title">$2n$ nombres&nbsp;: somme $=$ produit</div>
+    <div class="problem-body"><p>Soit $n$ un entier strictement positif. Aline souhaite écrire $2n$ nombres réels au tableau de sorte que :</p>
+<ul>
+<li>les $2n$ nombres ne sont pas tous égaux&#8239;;</li>
+<li>pour tout choix de $n$ nombres parmi les $2n$, la somme des $n$ nombres choisis est égale au produit des $n$ nombres restants.</li>
+</ul>
+<p>Pour quelles valeurs de $n$ Aline peut-elle réaliser son souhait&#8239;?</p></div>
+  </div>
+
+  <div class="problem-card" id="combinatoire-2023-15" style="--theme-color:#3b82f6">
+    <div class="problem-header">
+      <span class="year-badge">2023</span>
+      <span class="ex-num">Exercice 15</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-violet">🟣 Violet – Très difficile</span>
+    </div>
+    <div class="problem-title">Nombres spéciaux</div>
+    <div class="problem-body"><p>Soit $n \geq 2$ un entier fixé. Un nombre $S$ est dit <em>spécial</em> si pour tout entier strictement positif $k$ et pour toute décomposition $n = n_1 + n_2 + \cdots + n_k$ avec $n_1 \leq n_2 \leq \cdots \leq n_k$ entiers strictement positifs, on peut trouver des entiers $0 \leq a_1 < a_2 < \cdots < a_k$ tels que $a_1 n_1 + a_2 n_2 + \cdots + a_k n_k = S$.</p>
+<p>a) Montrer que $n^2 - 2n$ n'est pas spécial.</p>
+<p>b) Trouver tous les nombres spéciaux.</p></div>
+  </div>
+
+  <div class="problem-card" id="combinatoire-2024-11" style="--theme-color:#3b82f6">
+    <div class="problem-header">
+      <span class="year-badge">2024</span>
+      <span class="ex-num">Exercice 11</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-jaune">🟡 Jaune – Intermédiaire</span>
+    </div>
+    <div class="problem-title">Coloriage de réels en trois couleurs</div>
+    <div class="problem-body"><p>Baptiste écrit $n$ réels strictement positifs au tableau (non nécessairement distincts). Il remarque que chaque réel est strictement inférieur à la somme des $n-1$ autres. Baptiste voudrait colorier chaque réel en bleu, en vert ou en rouge, de sorte que la somme des réels d'une même couleur est strictement inférieure à la somme des réels des deux autres couleurs.</p>
+<p>Baptiste peut-il réaliser son souhait :</p>
+<p>1) si $n = 4$&#8239;? &nbsp;&nbsp;2) si $n = 5$&#8239;?</p></div>
+  </div>
+
+  <div class="problem-card" id="combinatoire-2024-13" style="--theme-color:#3b82f6">
+    <div class="problem-header">
+      <span class="year-badge">2024</span>
+      <span class="ex-num">Exercice 13</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-rouge">🔴 Rouge – Difficile</span>
+    </div>
+    <div class="problem-title">Grille $100\times100$ vers l'échiquier</div>
+    <div class="problem-body"><p>On considère une grille $100 \times 100$ dont toutes les cases sont blanches. Une opération consiste à choisir une ligne ou une colonne, et à changer la couleur de 99 des 100 cases de cette ligne ou colonne.</p>
+<p>Quel est le plus petit nombre d'opérations qu'il faut effectuer pour passer à un coloriage en échiquier (deux cases adjacentes toujours de couleur différente)&#8239;?</p></div>
+  </div>
+
+  <div class="problem-card" id="combinatoire-2025-10" style="--theme-color:#3b82f6">
+    <div class="problem-header">
+      <span class="year-badge">2025</span>
+      <span class="ex-num">Exercice 10</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-jaune">🟡 Jaune – Intermédiaire</span>
+    </div>
+    <div class="problem-title">Graphe d'amitié avec la propriété de transitivité</div>
+    <div class="problem-body"><p>Dans une pièce, certaines personnes sont amies (la relation est symétrique, et personne n'est amie avec elle-même). On remarque que pour tout choix de trois personnes distinctes $A$, $B$, $C$&nbsp;: si $A$ et $B$ sont amies et $B$ et $C$ ne sont pas amies, alors $A$ et $C$ sont amies. Chaque personne dans la pièce a exactement 4 amis.</p>
+<p>Combien au maximum peut-il y avoir de personnes dans la pièce&#8239;?</p></div>
+  </div>
+
+  <div class="problem-card" id="combinatoire-2025-12" style="--theme-color:#3b82f6">
+    <div class="problem-header">
+      <span class="year-badge">2025</span>
+      <span class="ex-num">Exercice 12</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-rouge">🔴 Rouge – Difficile</span>
+    </div>
+    <div class="problem-title">Entiers formant deux ensembles consécutifs</div>
+    <div class="problem-body"><p>Déterminer tous les entiers positifs $n \geq 2$ pour lesquels il existe des entiers positifs $a_1, a_2, \ldots, a_n$ tels que les deux ensembles
+$$\{a_1, a_2, \ldots, a_n\} \quad \text{et} \quad \{a_1 + a_2,\; a_2 + a_3,\; \ldots,\; a_n + a_1\}$$
+contiennent tous deux $n$ entiers consécutifs.</p></div>
+  </div>
+
+  <div class="problem-card" id="combinatoire-2025-13" style="--theme-color:#3b82f6">
+    <div class="problem-header">
+      <span class="year-badge">2025</span>
+      <span class="ex-num">Exercice 13</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-jaune">🟡 Jaune – Intermédiaire</span>
+    </div>
+    <div class="problem-title">2025 entiers&nbsp;: divisibilité croisée</div>
+    <div class="problem-body"><p>Sur un tableau sont écrits 2025 nombres entiers strictement positifs, non nécessairement distincts. Pour tout choix de 2023 nombres parmi ces 2025, chacun des deux nombres restants divise la somme des 2023 nombres choisis.</p>
+<p>Combien y a-t-il, au maximum, de nombres différents écrits au tableau&#8239;?</p></div>
+  </div>
+
+  <div class="problem-card" id="combinatoire-2025-15" style="--theme-color:#3b82f6">
+    <div class="problem-header">
+      <span class="year-badge">2025</span>
+      <span class="ex-num">Exercice 15</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-violet">🟣 Violet – Très difficile</span>
+    </div>
+    <div class="problem-title">Espions sur une grille $2025\times 2025$</div>
+    <div class="problem-body"><p>Martin place des espions dans certaines cases d'une grille $2025 \times 2025$. Aurélien choisit alors un carré $1025 \times 1025$ dans la grille et dit à Martin quels espions se trouvent dans ce carré.</p>
+<p>Combien d'espions au minimum Martin doit-il placer pour être sûr de pouvoir déterminer le carré $1025 \times 1025$ choisi par Aurélien&#8239;?</p></div>
+  </div>
+</section>
+
+<section id="geometrie">
+  <div class="section-header" style="border-left-color:#10b981">
+    <span class="section-icon" style="color:#10b981">△</span>
+    <h2>Géométrie</h2>
+    <span class="section-count">23 problèmes</span>
+  </div>
+
+  <div class="problem-card" id="geometrie-2014-6" style="--theme-color:#10b981">
+    <div class="problem-header">
+      <span class="year-badge">2014</span>
+      <span class="ex-num">Exercice 6</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-rouge">🔴 Rouge – Difficile</span>
+    </div>
+    <div class="problem-title">Cercles équidistants de quatre points</div>
+    <div class="problem-body"><p>Étant donnés un point $P$ et un cercle $\mathcal{C}$ du plan, on appelle <em>distance de $P$ à $\mathcal{C}$</em> la longueur minimale $PM$ entre $P$ et un point $M$ du cercle. Par exemple, si $P$ appartient au cercle alors la distance est nulle.</p>
+<p>Étant donnés quatre points $A, B, C, D$ non cocycliques, combien y a-t-il au maximum de cercles qui passent à égale distance de ces quatre points&#8239;?</p></div>
+  </div>
+
+  <div class="problem-card" id="geometrie-2015-4" style="--theme-color:#10b981">
+    <div class="problem-header">
+      <span class="year-badge">2015</span>
+      <span class="ex-num">Exercice 4</span>
+      <span class="label-badge badge-commun">Commun</span>
+      <span class="diff-badge diff-jaune">🟡 Jaune – Intermédiaire</span>
+    </div>
+    <div class="problem-title">Angles égaux dans un triangle avec isopérimètre partiel</div>
+    <div class="problem-body"><p>Soit $ABC$ un triangle. On choisit $M$ sur le côté $[BC]$, $N$ sur le côté $[CA]$ et $P$ sur le côté $[AB]$ de sorte que $BM = BP$ et $CM = CN$. On note $D_B$ la droite passant par $B$ et perpendiculaire à $[MP]$, et $D_C$ la droite passant par $C$ et perpendiculaire à $[MN]$. On suppose que les droites $D_B$ et $D_C$ se rencontrent en $I$.</p>
+<p>Prouver que les angles $\widehat{IPA}$ et $\widehat{INC}$ sont égaux.</p></div>
+  </div>
+
+  <div class="problem-card" id="geometrie-2015-7" style="--theme-color:#10b981">
+    <div class="problem-header">
+      <span class="year-badge">2015</span>
+      <span class="ex-num">Exercice 7</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-violet">🟣 Violet – Très difficile</span>
+    </div>
+    <div class="problem-title">Points sur un cercle et subdivision en arcs égaux</div>
+    <div class="problem-body"><p>$n$ points sont placés sur un cercle de diamètre $\tfrac{n}{\pi}$. On suppose que la longueur de n'importe quel arc entre deux de ces $n$ points est strictement plus grande que le nombre de points sur cet arc (sans compter les points sur les extrémités).</p>
+<p>Montrer que le cercle peut être subdivisé en $n$ arcs de même longueur contenant exactement un point chacun.</p></div>
+  </div>
+
+  <div class="problem-card" id="geometrie-2016-4" style="--theme-color:#10b981">
+    <div class="problem-header">
+      <span class="year-badge">2016</span>
+      <span class="ex-num">Exercice 4</span>
+      <span class="label-badge badge-commun">Commun</span>
+      <span class="diff-badge diff-jaune">🟡 Jaune – Intermédiaire</span>
+    </div>
+    <div class="problem-title">Trapèze isocèle et inégalité de distances</div>
+    <div class="problem-body"><p>Dans le plan, on considère un trapèze $ABCD$ dont les diagonales sont de même longueur.</p>
+<p>Prouver que, pour tout point $M$ du plan, la somme des distances de $M$ à trois sommets quelconques du trapèze est toujours strictement plus grande que la distance de $M$ au quatrième sommet.</p></div>
+  </div>
+
+  <div class="problem-card" id="geometrie-2017-3" style="--theme-color:#10b981">
+    <div class="problem-header">
+      <span class="year-badge">2017</span>
+      <span class="ex-num">Exercice 3</span>
+      <span class="label-badge badge-commun">Commun</span>
+      <span class="diff-badge diff-jaune">🟡 Jaune – Intermédiaire</span>
+    </div>
+    <div class="problem-title">Triangle à angle de $60°$ et médiatrices</div>
+    <div class="problem-body"><p>Soit $ABC$ un triangle tel que $\widehat{BAC} = 60°$. La médiatrice de $[AC]$ coupe la droite $(AB)$ en $P$, et la médiatrice de $[AB]$ coupe la droite $(AC)$ en $Q$.</p>
+<p>Montrer que $PQ = BC$.</p></div>
+  </div>
+
+  <div class="problem-card" id="geometrie-2017-4" style="--theme-color:#10b981">
+    <div class="problem-header">
+      <span class="year-badge">2017</span>
+      <span class="ex-num">Exercice 4</span>
+      <span class="label-badge badge-commun">Commun</span>
+      <span class="diff-badge diff-jaune">🟡 Jaune – Intermédiaire</span>
+    </div>
+    <div class="problem-title">Longueur de diagonale d'un quadrilatère</div>
+    <div class="problem-body"><p>On donne cinq nombres dans l'ordre croissant, qui sont les longueurs des côtés d'un quadrilatère (non croisé, mais non nécessairement convexe) et d'une de ses diagonales $D$. Ces nombres sont $3, 5, 7, 13$ et $19$.</p>
+<p>Quelle peut être la longueur de la diagonale $D$&#8239;?</p></div>
+  </div>
+
+  <div class="problem-card" id="geometrie-2018-5" style="--theme-color:#10b981">
+    <div class="problem-header">
+      <span class="year-badge">2018</span>
+      <span class="ex-num">Exercice 5</span>
+      <span class="label-badge badge-commun">Commun</span>
+      <span class="diff-badge diff-vert">🟢 Vert – Facile</span>
+    </div>
+    <div class="problem-title">Longueur sur un demi-cercle</div>
+    <div class="problem-body"><p>Sur un demi-cercle de diamètre $[AD]$, on place deux points $B$ et $C$ tels que $AB = BC = 1$. On suppose que $AD = 3$.</p>
+<p>Calculer la longueur $CD$.</p></div>
+  </div>
+
+  <div class="problem-card" id="geometrie-2018-7" style="--theme-color:#10b981">
+    <div class="problem-header">
+      <span class="year-badge">2018</span>
+      <span class="ex-num">Exercice 7</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-rouge">🔴 Rouge – Difficile</span>
+    </div>
+    <div class="problem-title">Trapèze, droite parallèle et angle droit</div>
+    <div class="problem-body"><p>Soit $ABCD$ un trapèze avec $(AB) \parallel (CD)$, tel que $AB + CD = AD$. Les diagonales $(AC)$ et $(BD)$ se coupent en un point $E$. La droite passant par $E$ et parallèle à $(AB)$ coupe $(AD)$ en un point $F$.</p>
+<p>Montrer que $\widehat{BFC} = 90°$.</p></div>
+  </div>
+
+  <div class="problem-card" id="geometrie-2019-6" style="--theme-color:#10b981">
+    <div class="problem-header">
+      <span class="year-badge">2019</span>
+      <span class="ex-num">Exercice 6</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-jaune">🟡 Jaune – Intermédiaire</span>
+    </div>
+    <div class="problem-title">Parallélogramme et perpendicularité</div>
+    <div class="problem-body"><p>Soit $ABCD$ un parallélogramme, et $P$ un point à l'intérieur de $ABCD$ tel que $CP = CB$. On note $M$ et $N$ les milieux de $[AP]$ et $[CD]$.</p>
+<p>Montrer que les droites $(BP)$ et $(MN)$ sont perpendiculaires.</p></div>
+  </div>
+
+  <div class="problem-card" id="geometrie-2020-10" style="--theme-color:#10b981">
+    <div class="problem-header">
+      <span class="year-badge">2020</span>
+      <span class="ex-num">Exercice 10</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-vert">🟢 Vert – Facile</span>
+    </div>
+    <div class="problem-title">Angles d'un triangle isocèle avec bissectrice spéciale</div>
+    <div class="problem-body"><p>Soit $ABC$ un triangle isocèle en $A$. La bissectrice de l'angle $\widehat{ABC}$ coupe le côté $[AC]$ en $D$. On suppose que $BD = DA$.</p>
+<p>Déterminer les angles du triangle $ABC$.</p></div>
+  </div>
+
+  <div class="problem-card" id="geometrie-2020-15" style="--theme-color:#10b981">
+    <div class="problem-header">
+      <span class="year-badge">2020</span>
+      <span class="ex-num">Exercice 15</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-jaune">🟡 Jaune – Intermédiaire</span>
+    </div>
+    <div class="problem-title">Carré extérieur et triangle équilatéral</div>
+    <div class="problem-body"><p>Soit $ABCD$ un carré et soit $S$ un point à l'extérieur du carré tel que le triangle $BCS$ soit équilatéral. On note $N$ le milieu du segment $[AS]$, $H$ le milieu du segment $[CD]$, et $P$ le milieu du segment $[BS]$.</p>
+<p>1) Calculer l'angle $\widehat{BPN}$.</p>
+<p>2) Calculer l'angle $\widehat{NHC}$.</p></div>
+  </div>
+
+  <div class="problem-card" id="geometrie-2021-10" style="--theme-color:#10b981">
+    <div class="problem-header">
+      <span class="year-badge">2021</span>
+      <span class="ex-num">Exercice 10</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-vert">🟢 Vert – Facile</span>
+    </div>
+    <div class="problem-title">Carré et triangle équilatéral intérieur</div>
+    <div class="problem-body"><p>Soit $ABCD$ un carré et soit $S$ un point à l'intérieur du carré tel que le triangle $ABS$ soit équilatéral.</p>
+<p>Déterminer l'angle $\widehat{DSC}$.</p></div>
+  </div>
+
+  <div class="problem-card" id="geometrie-2021-14" style="--theme-color:#10b981">
+    <div class="problem-header">
+      <span class="year-badge">2021</span>
+      <span class="ex-num">Exercice 14</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-rouge">🔴 Rouge – Difficile</span>
+    </div>
+    <div class="problem-title">Inégalités de distances dans triangles et quadrilatères</div>
+    <div class="problem-body"><p><strong>Partie 1.</strong> Soit $XYZ$ un triangle. Soit $L$ un point sur $[XY]$ et $N$ un point sur $[XZ]$. Soit $M$ le point d'intersection des segments $[ZL]$ et $[YN]$.</p>
+<p>Démontrer que $MY + MZ \leq XY + XZ$.</p>
+<p><strong>Partie 2.</strong> Soit $ABCD$ un quadrilatère convexe avec $(AD) \parallel (BC)$, $AB = CD$, $AD < AB$ et $BC < AB$. Soit $P$ un point à l'intérieur de $ABCD$.</p>
+<p>Démontrer que $PA + PB + PC + PD < 4AB < 2(PA + PB + PC + PD)$.</p></div>
+  </div>
+
+  <div class="problem-card" id="geometrie-2021-17" style="--theme-color:#10b981">
+    <div class="problem-header">
+      <span class="year-badge">2021</span>
+      <span class="ex-num">Exercice 17</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-rouge">🔴 Rouge – Difficile</span>
+    </div>
+    <div class="problem-title">8 fourmis sur les arêtes d'un cube</div>
+    <div class="problem-body"><p>On a placé 8 fourmis sur les arêtes d'un cube dont la longueur des arêtes vaut 1. Pour tout réel positif $d$, on dit que deux fourmis sont à <em>distance $d$</em> si la première doit parcourir une distance d'au moins $d$ pour rejoindre la seconde en se déplaçant uniquement le long des arêtes.</p>
+<p>Démontrer qu'il existe deux fourmis à distance inférieure ou égale à 1.</p></div>
+  </div>
+
+  <div class="problem-card" id="geometrie-2022-9" style="--theme-color:#10b981">
+    <div class="problem-header">
+      <span class="year-badge">2022</span>
+      <span class="ex-num">Exercice 9</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-vert">🟢 Vert – Facile</span>
+    </div>
+    <div class="problem-title">Angles d'un triangle AMC isocèle</div>
+    <div class="problem-body"><p>Soit $AMC$ un triangle isocèle en $M$ tel que l'angle $\widehat{AMC}$ est aigu. Soit $B$ le symétrique du point $A$ par rapport au point $M$ et soit $H$ le pied de la hauteur issue du sommet $C$ dans le triangle $ABC$. On suppose que $AH = HM$.</p>
+<p>Calculer les valeurs des trois angles du triangle $ABC$.</p></div>
+  </div>
+
+  <div class="problem-card" id="geometrie-2022-12" style="--theme-color:#10b981">
+    <div class="problem-header">
+      <span class="year-badge">2022</span>
+      <span class="ex-num">Exercice 12</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-rouge">🔴 Rouge – Difficile</span>
+    </div>
+    <div class="problem-title">Angles et bissectrices dans un triangle isocèle en $B$</div>
+    <div class="problem-body"><p>Soit $ABC$ un triangle isocèle en $B$. Soit $D$ le point d'intersection de la bissectrice de $\widehat{BAC}$ avec le segment $[BC]$. Soit $E$ le point du segment $[AC]$ distinct de $C$ tel que $DE = DC$. Soit $F$ le point d'intersection de la bissectrice de $\widehat{AED}$ avec le côté $[AB]$.</p>
+<p>Montrer que $\widehat{AFE} = \widehat{EFD}$.</p></div>
+  </div>
+
+  <div class="problem-card" id="geometrie-2022-13" style="--theme-color:#10b981">
+    <div class="problem-header">
+      <span class="year-badge">2022</span>
+      <span class="ex-num">Exercice 13</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-rouge">🔴 Rouge – Difficile</span>
+    </div>
+    <div class="problem-title">Colorier le plan en 3 couleurs et triangle rectangle</div>
+    <div class="problem-body"><p>On colorie chaque point du plan avec l'une des trois couleurs bleu, vert ou rouge. Pour chaque couleur, on suppose qu'il existe au moins un point du plan colorié avec cette couleur.</p>
+<p>Montrer qu'il existe un triangle rectangle dont les trois sommets sont de couleurs différentes deux à deux.</p></div>
+  </div>
+
+  <div class="problem-card" id="geometrie-2023-9" style="--theme-color:#10b981">
+    <div class="problem-header">
+      <span class="year-badge">2023</span>
+      <span class="ex-num">Exercice 9</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-vert">🟢 Vert – Facile</span>
+    </div>
+    <div class="problem-title">Angle $\widehat{ABC}$ dans un triangle</div>
+    <div class="problem-body"><p>Soit $ABC$ un triangle vérifiant $\widehat{CAB} = 20°$. Soit $D$ le milieu du segment $[AB]$. On suppose que $\widehat{CDB} = 40°$.</p>
+<p>Que vaut l'angle $\widehat{ABC}$&#8239;?</p></div>
+  </div>
+
+  <div class="problem-card" id="geometrie-2023-12" style="--theme-color:#10b981">
+    <div class="problem-header">
+      <span class="year-badge">2023</span>
+      <span class="ex-num">Exercice 12</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-jaune">🟡 Jaune – Intermédiaire</span>
+    </div>
+    <div class="problem-title">Rapport $EK/EA$ dans un losange</div>
+    <div class="problem-body"><p>Soit $ABCD$ un losange, et soit $E$ le point d'intersection des diagonales. Soit $F$ le milieu du segment $[BE]$, et $G$ le milieu du segment $[AD]$. Soit $I$ le point d'intersection des droites $(FG)$ et $(AC)$, et soit $K$ le symétrique de $A$ par rapport au point $I$.</p>
+<p>Que vaut $\dfrac{EK}{EA}$&#8239;?</p></div>
+  </div>
+
+  <div class="problem-card" id="geometrie-2024-10" style="--theme-color:#10b981">
+    <div class="problem-header">
+      <span class="year-badge">2024</span>
+      <span class="ex-num">Exercice 10</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-jaune">🟡 Jaune – Intermédiaire</span>
+    </div>
+    <div class="problem-title">Centre du cercle inscrit et angle $\widehat{BID}$</div>
+    <div class="problem-body"><p>Soit $ABC$ un triangle non plat. Soit $I$ le centre de son cercle inscrit et soit $D$ le point d'intersection de la bissectrice de $\widehat{BAC}$ avec le segment $[BC]$.</p>
+<p>Montrer que $\widehat{BID} \neq 90°$.</p></div>
+  </div>
+
+  <div class="problem-card" id="geometrie-2024-14" style="--theme-color:#10b981">
+    <div class="problem-header">
+      <span class="year-badge">2024</span>
+      <span class="ex-num">Exercice 14</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-rouge">🔴 Rouge – Difficile</span>
+    </div>
+    <div class="problem-title">Triangle isocèle, médiatrice et parallèle</div>
+    <div class="problem-body"><p>Soit $ABC$ un triangle isocèle en $A$. Soit $D$ le milieu du segment $[AC]$ et $G$ le centre de gravité du triangle $ABC$. La droite $(BD)$ coupe le cercle de diamètre $[AC]$ au point $E$, de sorte que $E$ et $B$ sont de part et d'autre de $[AC]$. La médiatrice du segment $[EC]$ recoupe la droite $(AG)$ au point $H$.</p>
+<p>1) Montrer que la droite $(BH)$ est la bissectrice de l'angle $\widehat{GBA}$.</p>
+<p>2) Soit $F$ le pied de la hauteur issue du sommet $A$ dans le triangle $ABC$. Montrer que les droites $(EF)$ et $(BH)$ sont parallèles.</p></div>
+  </div>
+
+  <div class="problem-card" id="geometrie-2025-9" style="--theme-color:#10b981">
+    <div class="problem-header">
+      <span class="year-badge">2025</span>
+      <span class="ex-num">Exercice 9</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-vert">🟢 Vert – Facile</span>
+    </div>
+    <div class="problem-title">Rectangle, bissectrice et angle $\widehat{PXQ}$</div>
+    <div class="problem-body"><p>Soit $ABCD$ un rectangle avec $AB > AD$. Soit $P$ le point de la demi-droite $[DA)$ tel que $\widehat{DCP} = 30°$, et soit $Q$ le point du segment $[CD]$ tel que $\widehat{DAQ} = 45°$. Soit $X$ le point d'intersection de la bissectrice de l'angle $\widehat{AQC}$ et de la droite $(CP)$.</p>
+<p>Déterminer la mesure de l'angle $\widehat{PXQ}$.</p></div>
+  </div>
+
+  <div class="problem-card" id="geometrie-2025-11" style="--theme-color:#10b981">
+    <div class="problem-header">
+      <span class="year-badge">2025</span>
+      <span class="ex-num">Exercice 11</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-jaune">🟡 Jaune – Intermédiaire</span>
+    </div>
+    <div class="problem-title">Triangle isocèle en $A$, milieux et hauteur</div>
+    <div class="problem-body"><p>Soit $ABC$ un triangle isocèle en $A$. Soient $M$ et $N$ les milieux des segments $[BC]$ et $[AC]$ respectivement, et soit $P$ le pied de la hauteur issue de $C$ dans $ABC$.</p>
+<p>Montrer que $[PM)$ est la bissectrice de $\widehat{NPB}$.</p></div>
+  </div>
+</section>
+
+<section id="arithmetique">
+  <div class="section-header" style="border-left-color:#f59e0b">
+    <span class="section-icon" style="color:#f59e0b">∞</span>
+    <h2>Arithmétique</h2>
+    <span class="section-count">16 problèmes</span>
+  </div>
+
+  <div class="problem-card" id="arithmetique-2015-6" style="--theme-color:#f59e0b">
+    <div class="problem-header">
+      <span class="year-badge">2015</span>
+      <span class="ex-num">Exercice 6</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-rouge">🔴 Rouge – Difficile</span>
+    </div>
+    <div class="problem-title">Étude de $f(n) = \left\lfloor n / \lfloor\sqrt{n}\rfloor \right\rfloor$</div>
+    <div class="problem-body"><p>On note $[x]$ la partie entière de $x$. On note $f(n) = \left[\dfrac{n}{[\sqrt{n}]}\right]$.</p>
+<p>Trouver tous les entiers $n$ tels que $f(n+1) > f(n)$.</p></div>
+  </div>
+
+  <div class="problem-card" id="arithmetique-2015-8" style="--theme-color:#f59e0b">
+    <div class="problem-header">
+      <span class="year-badge">2015</span>
+      <span class="ex-num">Exercice 8</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-violet">🟣 Violet – Très difficile</span>
+    </div>
+    <div class="problem-title">Nombres premiers et carrés parfaits</div>
+    <div class="problem-body"><p>Soit $p, q, r$ des nombres premiers tels que chacun des trois nombres $pq + 1$, $pr + 1$ et $qr - p$ est le carré d'un entier.</p>
+<p>Prouver que $p + 2qr + 2$ est également le carré d'un entier.</p></div>
+  </div>
+
+  <div class="problem-card" id="arithmetique-2016-7" style="--theme-color:#f59e0b">
+    <div class="problem-header">
+      <span class="year-badge">2016</span>
+      <span class="ex-num">Exercice 7</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-rouge">🔴 Rouge – Difficile</span>
+    </div>
+    <div class="problem-title">Entier divisible par la somme de ses chiffres</div>
+    <div class="problem-body"><p>Montrer que parmi 18 entiers consécutifs inférieurs ou égaux à 2016, il en existe au moins un qui est divisible par la somme de ses chiffres.</p></div>
+  </div>
+
+  <div class="problem-card" id="arithmetique-2017-5" style="--theme-color:#f59e0b">
+    <div class="problem-header">
+      <span class="year-badge">2017</span>
+      <span class="ex-num">Exercice 5</span>
+      <span class="label-badge badge-commun">Commun</span>
+      <span class="diff-badge diff-jaune">🟡 Jaune – Intermédiaire</span>
+    </div>
+    <div class="problem-title">Ajouter le plus grand chiffre</div>
+    <div class="problem-body"><p>On a écrit un nombre au tableau. À chaque étape, on lui ajoute le plus grand de ses chiffres (par exemple, si on a écrit 142, le nombre suivant sera 146).</p>
+<p>Quel est le plus grand nombre possible de nombres <em>impairs</em> que l'on peut écrire consécutivement en procédant de la sorte&#8239;?</p></div>
+  </div>
+
+  <div class="problem-card" id="arithmetique-2017-6" style="--theme-color:#f59e0b">
+    <div class="problem-header">
+      <span class="year-badge">2017</span>
+      <span class="ex-num">Exercice 6</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-rouge">🔴 Rouge – Difficile</span>
+    </div>
+    <div class="problem-title">Diviseurs de $n$ et diviseurs de $n-1$</div>
+    <div class="problem-body"><p>Déterminer tous les entiers $n \geq 2$ tels que pour tout entier $d \geq 2$, si $d$ est un diviseur de $n$ alors $d - 1$ est un diviseur de $n - 1$.</p></div>
+  </div>
+
+  <div class="problem-card" id="arithmetique-2019-5" style="--theme-color:#f59e0b">
+    <div class="problem-header">
+      <span class="year-badge">2019</span>
+      <span class="ex-num">Exercice 5</span>
+      <span class="label-badge badge-commun">Commun</span>
+      <span class="diff-badge diff-rouge">🔴 Rouge – Difficile</span>
+    </div>
+    <div class="problem-title">Parties entières de puissances et carrés</div>
+    <div class="problem-body"><p>Soit $x$ un nombre réel positif. On suppose que $\lfloor x^2 \rfloor$, $\lfloor x^3 \rfloor$ et $\lfloor x^4 \rfloor$ sont des carrés d'entiers.</p>
+<p>Montrer qu'alors $\lfloor x \rfloor$ est aussi le carré d'un entier.</p></div>
+  </div>
+
+  <div class="problem-card" id="arithmetique-2019-7" style="--theme-color:#f59e0b">
+    <div class="problem-header">
+      <span class="year-badge">2019</span>
+      <span class="ex-num">Exercice 7</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-violet">🟣 Violet – Très difficile</span>
+    </div>
+    <div class="problem-title">Suite et divisibilité par $3^{2019}$</div>
+    <div class="problem-body"><p>Soit $(u_n)$ une suite d'entiers telle que $u_1 > 0$ et, pour tout $n > 0$, $u_{n+1}$ est la somme de $u_n$ et de son plus grand diviseur excepté lui-même. Par exemple, si $u_n = 12$, alors $u_{n+1} = 12 + 6 = 18$.</p>
+<p>Montrer qu'il existe $N$ tel que, pour tout $n \geq N$, l'entier $u_n$ est divisible par $3^{2019}$.</p></div>
+  </div>
+
+  <div class="problem-card" id="arithmetique-2020-13" style="--theme-color:#f59e0b">
+    <div class="problem-header">
+      <span class="year-badge">2020</span>
+      <span class="ex-num">Exercice 13</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-jaune">🟡 Jaune – Intermédiaire</span>
+    </div>
+    <div class="problem-title">Entiers vérifiant $n \leq 2s(n)$</div>
+    <div class="problem-body"><p>Pour tout entier $n \geq 0$, on nomme $s(n)$ la somme des chiffres de $n$.</p>
+<p>Déterminer tous les entiers $n \geq 0$ tels que $n \leq 2s(n)$.</p></div>
+  </div>
+
+  <div class="problem-card" id="arithmetique-2020-14" style="--theme-color:#f59e0b">
+    <div class="problem-header">
+      <span class="year-badge">2020</span>
+      <span class="ex-num">Exercice 14</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-rouge">🔴 Rouge – Difficile</span>
+    </div>
+    <div class="problem-title">Deux entiers avec diviseurs décalés de 1</div>
+    <div class="problem-body"><p>Déterminer les entiers $m \geq 2$, $n \geq 2$ et $k \geq 3$ ayant la propriété suivante&nbsp;: $m$ et $n$ ont chacun $k$ diviseurs positifs et, si l'on note $d_1 < \cdots < d_k$ les diviseurs de $m$ et $d'_1 < \cdots < d'_k$ les diviseurs de $n$, alors $d'_i = d_i + 1$ pour tout entier $i$ tel que $2 \leq i \leq k-1$.</p></div>
+  </div>
+
+  <div class="problem-card" id="arithmetique-2021-11" style="--theme-color:#f59e0b">
+    <div class="problem-header">
+      <span class="year-badge">2021</span>
+      <span class="ex-num">Exercice 11</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-jaune">🟡 Jaune – Intermédiaire</span>
+    </div>
+    <div class="problem-title">Diviseurs d'un multiple de 2020</div>
+    <div class="problem-body"><p>Aline choisit un entier $n$ divisible par 2020. Elle écrit au tableau tous les entiers $d$ qui divisent $n$ et tels que $1 \leq d < n$.</p>
+<p>Démontrer que la somme des nombres impairs écrits au tableau est inférieure à la somme des entiers pairs écrits au tableau.</p></div>
+  </div>
+
+  <div class="problem-card" id="arithmetique-2021-13" style="--theme-color:#f59e0b">
+    <div class="problem-header">
+      <span class="year-badge">2021</span>
+      <span class="ex-num">Exercice 13</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-rouge">🔴 Rouge – Difficile</span>
+    </div>
+    <div class="problem-title">Notes modifiées et différence de 100</div>
+    <div class="problem-body"><p>Six mille élèves ont passé un examen, chacun obtenant une note entière entre 0 et 8. Vincent remplace toutes les notes égales à 1, 2 ou 3 par 0, et toutes les notes égales à 5, 6 ou 7 par 8. Les autres notes sont inchangées. Après ce changement, la moyenne des scores a augmenté de $\tfrac{1}{10}$.</p>
+<p>Démontrer qu'il existe deux entiers $a$ et $b$ tels que la différence entre le nombre d'élèves ayant obtenu la note $a$ et le nombre d'élèves ayant obtenu la note $b$ avant les modifications est d'au moins 100.</p></div>
+  </div>
+
+  <div class="problem-card" id="arithmetique-2022-8" style="--theme-color:#f59e0b">
+    <div class="problem-header">
+      <span class="year-badge">2022</span>
+      <span class="ex-num">Exercice 8</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-vert">🟢 Vert – Facile</span>
+    </div>
+    <div class="problem-title">Diamants et cristaux (réponse numérique)</div>
+    <div class="problem-body"><p>Le prix (en euros) d'un diamant est sa masse (en grammes) au carré multipliée par 100. Le prix d'un cristal est trois fois sa masse. Un trésor (diamants + cristaux) vaut 5 000 000 €. On coupe chaque pierre en deux et Martin prend une moitié de chaque pierre : la valeur des pierres de Martin vaut 2 000 000 €.</p>
+<p>En euros, quelle était la valeur totale initiale des diamants du trésor&#8239;? <em>(Seule une réponse numérique est attendue.)</em></p></div>
+  </div>
+
+  <div class="problem-card" id="arithmetique-2022-14" style="--theme-color:#f59e0b">
+    <div class="problem-header">
+      <span class="year-badge">2022</span>
+      <span class="ex-num">Exercice 14</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-rouge">🔴 Rouge – Difficile</span>
+    </div>
+    <div class="problem-title">Suite d'entiers et quotients entiers</div>
+    <div class="problem-body"><p>Soient $a_1 < \cdots < a_n$ des entiers strictement positifs. On suppose que pour toute paire $(i, j)$ avec $1 \leq i < j \leq n$, le nombre $\dfrac{a_i}{a_j - a_i}$ est un entier.</p>
+<p>1) Montrer que pour tout $m$ avec $1 \leq m \leq n-1$&nbsp;: $m \cdot a_{m+1} \leq (m+1) \cdot a_m$.</p>
+<p>2) Montrer que si $1 \leq i < j \leq n$, alors $i \cdot a_j \leq j \cdot a_i$.</p></div>
+  </div>
+
+  <div class="problem-card" id="arithmetique-2023-8" style="--theme-color:#f59e0b">
+    <div class="problem-header">
+      <span class="year-badge">2023</span>
+      <span class="ex-num">Exercice 8</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-vert">🟢 Vert – Facile</span>
+    </div>
+    <div class="problem-title">$n/3$ et $3n$ simultanément entre 1 et 1000 (réponse num.)</div>
+    <div class="problem-body"><p>Combien y a-t-il de nombres entiers $n$ tels que $\dfrac{n}{3}$ et $3n$ soient tous deux des nombres entiers compris entre 1 et 1000 (1 et 1000 inclus)&#8239;?</p>
+<p><em>(Seule une réponse numérique est attendue.)</em></p></div>
+  </div>
+
+  <div class="problem-card" id="arithmetique-2024-12" style="--theme-color:#f59e0b">
+    <div class="problem-header">
+      <span class="year-badge">2024</span>
+      <span class="ex-num">Exercice 12</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-rouge">🔴 Rouge – Difficile</span>
+    </div>
+    <div class="problem-title">Nombres premiers et groupes consécutifs</div>
+    <div class="problem-body"><p>Déterminer tous les nombres premiers $p$ vérifiant la propriété suivante&nbsp;: si on écrit les entiers de 1 à $p$ au tableau, on peut les séparer en plusieurs groupes de nombres consécutifs de même somme.</p></div>
+  </div>
+
+  <div class="problem-card" id="arithmetique-2025-8" style="--theme-color:#f59e0b">
+    <div class="problem-header">
+      <span class="year-badge">2025</span>
+      <span class="ex-num">Exercice 8</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-vert">🟢 Vert – Facile</span>
+    </div>
+    <div class="problem-title">Calcul de racines imbriquées (réponse numérique)</div>
+    <div class="problem-body"><p>Calculer $\sqrt{\sqrt{27} \cdot \sqrt{75} + \sqrt{3} \cdot \sqrt{8} \cdot \sqrt{54}}$.</p>
+<p><em>(Seule une réponse numérique simplifiée est attendue.)</em></p></div>
+  </div>
+</section>
+
+<section id="algebre">
+  <div class="section-header" style="border-left-color:#a78bfa">
+    <span class="section-icon" style="color:#a78bfa">∫</span>
+    <h2>Algèbre</h2>
+    <span class="section-count">11 problèmes</span>
+  </div>
+
+  <div class="problem-card" id="algebre-2014-7" style="--theme-color:#a78bfa">
+    <div class="problem-header">
+      <span class="year-badge">2014</span>
+      <span class="ex-num">Exercice 7</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-rouge">🔴 Rouge – Difficile</span>
+    </div>
+    <div class="problem-title">Suite strictement croissante et inégalité produit-somme</div>
+    <div class="problem-body"><p>Déterminer tous les entiers $x_1, x_2, \ldots, x_9, x_{10}$ tels que
+$$0 < x_1 < x_2 < \cdots < x_9 < x_{10} \quad \text{et} \quad x_9 x_{10} \leq 2(x_1 + x_2 + \cdots + x_9).$$</p></div>
+  </div>
+
+  <div class="problem-card" id="algebre-2016-5" style="--theme-color:#a78bfa">
+    <div class="problem-header">
+      <span class="year-badge">2016</span>
+      <span class="ex-num">Exercice 5</span>
+      <span class="label-badge badge-commun">Commun</span>
+      <span class="diff-badge diff-vert">🟢 Vert – Facile</span>
+    </div>
+    <div class="problem-title">Retrouver une valeur parmi cinq réels</div>
+    <div class="problem-body"><p>Soient $a < b < c < d < e$ des nombres réels. On calcule toutes les sommes possibles de deux nombres distincts parmi ces cinq. Les trois plus petites sommes valent 32, 36 et 37, et les deux plus grandes valent 48 et 51.</p>
+<p>Trouver toutes les valeurs possibles de $e$.</p></div>
+  </div>
+
+  <div class="problem-card" id="algebre-2018-4" style="--theme-color:#a78bfa">
+    <div class="problem-header">
+      <span class="year-badge">2018</span>
+      <span class="ex-num">Exercice 4</span>
+      <span class="label-badge badge-commun">Commun</span>
+      <span class="diff-badge diff-vert">🟢 Vert – Facile</span>
+    </div>
+    <div class="problem-title">Réel $a$ dont deux expressions sont entières</div>
+    <div class="problem-body"><p>Trouver tous les nombres réels $a$ tels que $a + \dfrac{2}{3}$ et $\dfrac{1}{a} - \dfrac{3}{4}$ soient des entiers.</p></div>
+  </div>
+
+  <div class="problem-card" id="algebre-2020-12" style="--theme-color:#a78bfa">
+    <div class="problem-header">
+      <span class="year-badge">2020</span>
+      <span class="ex-num">Exercice 12</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-jaune">🟡 Jaune – Intermédiaire</span>
+    </div>
+    <div class="problem-title">Double inégalité $P \leq G \leq 2P$</div>
+    <div class="problem-body"><p>Soit $x_1, \ldots, x_n$ et $y_1, \ldots, y_n$ deux listes de réels telles que $\min_i x_i > \max_i y_i$. On pose
+$$P = \max_{1\leq i \leq n}(x_i - y_i) \quad \text{et} \quad G = \max_{1\leq i\leq n} x_i - \min_{1\leq i\leq n} y_i.$$
+Démontrer que $P \leq G \leq 2P$.</p></div>
+  </div>
+
+  <div class="problem-card" id="algebre-2021-9" style="--theme-color:#a78bfa">
+    <div class="problem-header">
+      <span class="year-badge">2021</span>
+      <span class="ex-num">Exercice 9</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-vert">🟢 Vert – Facile</span>
+    </div>
+    <div class="problem-title">Cartes rouges et noires (réponse numérique)</div>
+    <div class="problem-body"><p>Dans un paquet de cartes composé uniquement de cartes rouges et de cartes noires, il y a 2 fois plus de cartes noires que de cartes rouges. Si l'on rajoute 4 cartes noires, il y a alors 3 fois plus de cartes noires que de cartes rouges.</p>
+<p>Combien le paquet comportait-il de cartes avant l'ajout&#8239;? <em>(Seule une réponse numérique est attendue.)</em></p></div>
+  </div>
+
+  <div class="problem-card" id="algebre-2021-15" style="--theme-color:#a78bfa">
+    <div class="problem-header">
+      <span class="year-badge">2021</span>
+      <span class="ex-num">Exercice 15</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-jaune">🟡 Jaune – Intermédiaire</span>
+    </div>
+    <div class="problem-title">Réels dans $]-1, 1[$ de sommes prescrites</div>
+    <div class="problem-body"><p>Déterminer le plus petit entier $n$ tel qu'il existe $n$ réels $x_1, \ldots, x_n$ appartenant tous à l'intervalle $]-1, 1[$ et vérifiant $x_1 + \cdots + x_n = 0$ et $x_1^2 + \cdots + x_n^2 = 2020$.</p></div>
+  </div>
+
+  <div class="problem-card" id="algebre-2022-15" style="--theme-color:#a78bfa">
+    <div class="problem-header">
+      <span class="year-badge">2022</span>
+      <span class="ex-num">Exercice 15</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-violet">🟣 Violet – Très difficile</span>
+    </div>
+    <div class="problem-title">Inégalité entre puissances de réels positifs</div>
+    <div class="problem-body"><p>Soit $n$ un entier strictement positif, $x_1, \ldots, x_{n+1}$ des réels strictement positifs et $p < q$ deux entiers strictement positifs. On suppose que $x_{n+1}^p > x_1^p + \cdots + x_n^p$.</p>
+<p>1) Montrer que $x_{n+1}^q > x_1^q + \cdots + x_n^q$.</p>
+<p>2) Montrer que $\left[x_{n+1}^p - (x_1^p + \cdots + x_n^p)\right]^q < \left[x_{n+1}^q - (x_1^q + \cdots + x_n^q)\right]^p$.</p></div>
+  </div>
+
+  <div class="problem-card" id="algebre-2024-8" style="--theme-color:#a78bfa">
+    <div class="problem-header">
+      <span class="year-badge">2024</span>
+      <span class="ex-num">Exercice 8</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-vert">🟢 Vert – Facile</span>
+    </div>
+    <div class="problem-title">Calcul numérique (réponse numérique)</div>
+    <div class="problem-body"><p>Calculer $\dfrac{3^3 + 35}{5^4}$.</p>
+<p><em>(Seule une réponse numérique est attendue.)</em></p></div>
+  </div>
+
+  <div class="problem-card" id="algebre-2024-9" style="--theme-color:#a78bfa">
+    <div class="problem-header">
+      <span class="year-badge">2024</span>
+      <span class="ex-num">Exercice 9</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-vert">🟢 Vert – Facile</span>
+    </div>
+    <div class="problem-title">Système linéaire impliquant $a^2 + b^2 = 2c^2$</div>
+    <div class="problem-body"><p>Soient $a, b$ et $c$ trois réels vérifiant les deux équations $4a + 3b = c$ et $3a - 4b = 7c$.</p>
+<p>Montrer que $a^2 + b^2 = 2c^2$.</p></div>
+  </div>
+
+  <div class="problem-card" id="algebre-2024-15" style="--theme-color:#a78bfa">
+    <div class="problem-header">
+      <span class="year-badge">2024</span>
+      <span class="ex-num">Exercice 15</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-violet">🟣 Violet – Très difficile</span>
+    </div>
+    <div class="problem-title">Constante optimale pour l'attribution de cadeaux</div>
+    <div class="problem-body"><p>Au stage Animath, il y a $n$ élèves ($n \geq 2$). L'élève $i$ aime exactement $x_i > 0$ cadeaux (distincts et en un seul exemplaire chacun).</p>
+<p>Déterminer, en fonction de $n$, le plus grand réel $c > 0$ vérifiant&nbsp;: quels que soient les entiers strictement positifs $x_1, \ldots, x_n$, si $\dfrac{1}{x_1} + \dfrac{1}{x_2} + \cdots + \dfrac{1}{x_n} < c$, alors on peut donner à chaque élève un cadeau qu'il aime (sans doublon).</p></div>
+  </div>
+
+  <div class="problem-card" id="algebre-2025-14" style="--theme-color:#a78bfa">
+    <div class="problem-header">
+      <span class="year-badge">2025</span>
+      <span class="ex-num">Exercice 14</span>
+      <span class="label-badge badge-lycee">Lycée</span>
+      <span class="diff-badge diff-rouge">🔴 Rouge – Difficile</span>
+    </div>
+    <div class="problem-title">Réels $n$-permutants et somme de parties entières</div>
+    <div class="problem-body"><p>Soit $n \geq 2$ un entier. On dit que $x_1, x_2, \ldots, x_n$ sont <em>$n$-permutants</em> si chaque élément de $\{1, 2, \ldots, n\}$ est égal à exactement un des $\lfloor x_1 \rfloor, \lfloor x_2 \rfloor, \ldots, \lfloor x_n \rfloor$.</p>
+<p>Déterminer, en fonction de $n$, la valeur maximale et la valeur minimale que peut prendre la somme
+$$\lfloor x_2 - x_1 \rfloor + \lfloor x_3 - x_2 \rfloor + \cdots + \lfloor x_n - x_{n-1} \rfloor$$
+lorsque $x_1, x_2, \ldots, x_n$ sont $n$-permutants.</p></div>
+  </div>
+</section>
+
+
+  </main>
+</div>
+</body>
+</html>
